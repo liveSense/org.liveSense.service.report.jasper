@@ -1,0 +1,22 @@
+<RowCollection>
+	<Row>
+		<foodType label="Fruit Type" bounds="100" index="0">Mango</foodType>
+		<quantity label="Quantity" bounds="100" index="1">2</quantity>
+		<unitOfMeasure label="Unit Of Measure" bounds="100" index="2">Each</unitOfMeasure>
+		<pricePerUnit label="Price Per Unit" bounds="100" index="3">$1.20</pricePerUnit>
+	</Row>
+	<Row>
+		<foodType label="Fruit Type" bounds="100" index="0">Apple</foodType>
+		<quantity label="Quantity" bounds="100" index="1">7</quantity>
+		<unitOfMeasure label="Unit Of Measure" bounds="100" index="2">Dozen</unitOfMeasure>
+		<pricePerUnit label="Price Per Unit" bounds="100" index="3">$7.35</pricePerUnit>
+	</Row>	
+	<Row>
+		<foodType label="Fruit Type" bounds="100" index="0">Orange</foodType>
+		<quantity label="Quantity" bounds="100" index="1">8</quantity>
+		<unitOfMeasure label="Unit Of Measure" bounds="100" index="2">Bag</unitOfMeasure>
+		<pricePerUnit label="Price Per Unit" bounds="100" index="3">$4.50</pricePerUnit>
+	</Row>	
+	
+	
+</RowCollection>

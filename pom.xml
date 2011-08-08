@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+/*
+ *  Copyright 2010 Robert Csakany <robson@semmi.se>.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *  under the License.
+ */
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+  <parent>
+      <groupId>org.liveSense</groupId>
+      <artifactId>org.liveSense.parent</artifactId>
+      <version>1-SNAPSHOT</version>
+  </parent>
+  <scm>
+      <connection>scm:git:git://github.com/liveSense/org.liveSense.service.report.jasper.git</connection>
+      <developerConnection>scm:git:git://github.com/liveSense/org.liveSense.service.report.jasper.git</developerConnection>
+      <url>https://github.com/liveSense/org.liveSense.service.report.jasper</url>
+  </scm>  
+
+	<artifactId>org.liveSense.service.report.jasper</artifactId>
+	<packaging>bundle</packaging>
+	<version>1.0.1-SNAPSHOT</version>
+	<name>liveSense Jasper report service</name>
+	<description>
+		liveSense Jasper report service
+	</description>
+
+	<build>
+		<plugins>
+             <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-scr-plugin</artifactId>
+            </plugin>
+
+		      <plugin>
+		        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>jasperreports-maven-plugin</artifactId>
+		        <version>1.0-beta-2</version>
+		        <configuration>
+			   <outputDirectory>${basedir}/target/jasperreports</outputDirectory>
+			   <xmlValidation>true</xmlValidation>
+		        </configuration>
+		        <executions>
+		          <execution>	
+		            <goals>
+		              <goal>compile-reports</goal>
+		            </goals>
+		            <phase>compile</phase>
+		          </execution>
+		        </executions>
+		        <dependencies>
+		        	<dependency>
+  						<groupId>jasperreports</groupId>
+  						<artifactId>jasperreports</artifactId>
+  						<version>3.5.1</version>
+					</dependency>
+					
+					<dependency>
+    					<groupId>log4j</groupId>
+    					<artifactId>log4j</artifactId>
+    					<version>1.2.16</version>
+					</dependency>		        
+		        </dependencies>
+		      </plugin>
+
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Import-Package>
+							!antlr.parseview,
+							!com.apple.mrj,
+							!com.ibm.ejs.jts.jta,
+							!com.ibm.ws.Transaction,
+							!com.mchange.v2.c3p0,
+							!com.mockobjects,
+							!com.mockobjects.constraint,
+							!com.mockobjects.dynamic,
+							!com.opensymphony.oscache.base,
+							!com.opensymphony.oscache.general,
+							!com.opensymphony.util,
+							!com.opensymphony.webwork,
+							!com.opensymphony.webwork.views.jasperreports,
+							!com.opensymphony.xwork,
+							!com.opensymphony.xwork.util,
+							!edu.emory.mathcs.backport.java.util.concurrent,
+							!groovy.runtime.metaclass,
+							!groovyjarjarasm.asm.tree.analysis,
+							!groovyjarjarasm.asm.util,
+							!java_cup.runtime,
+							!javax.portlet,
+							!javax.security.jacc,
+							!jline,
+							!junit.framework,
+							!junit.textui,
+							!kaffe.rmi.rmic,
+							!net.sf.cglib.beans,
+							!net.sf.cglib.core,
+							!net.sf.cglib.proxy,
+							!net.sf.cglib.reflect,
+							!net.sf.cglib.transform,
+							!net.sf.cglib.transform.impl,
+							!net.sf.ehcache,
+							!net.sf.saxon,
+							!net.sf.saxon.dom,
+							!net.sf.saxon.event,
+							!net.sf.saxon.expr,
+							!net.sf.saxon.instruct,
+							!net.sf.saxon.om,
+							!net.sf.saxon.style,
+							!net.sf.saxon.trans,
+							!net.sf.saxon.type,
+							!net.sf.swarmcache,
+							!nu.xom,
+							!org.apache.avalon.framework,
+							!org.apache.avalon.framework.configuration,
+							!org.apache.avalon.framework.container,
+							!org.apache.avalon.framework.logger,
+							!org.apache.bsf,
+							!org.apache.bsf.util,
+							!org.apache.commons.attributes,
+							!org.apache.commons.cli,
+							!org.apache.commons.dbcp,
+							!org.apache.commons.jci.stores,
+							!org.apache.commons.math,
+							!org.apache.commons.math.distribution,
+							!org.apache.commons.pool,
+							!org.apache.commons.pool.impl,
+							!org.apache.commons.vfs,
+							!org.apache.commons.vfs.provider.http,
+							!org.apache.env,
+							!org.apache.log,
+							!org.apache.log4j.xml,
+							!org.apache.regexp,
+							!org.apache.tools.ant.taskdefs.optional,
+							!org.apache.xml.resolver,
+							!org.apache.xml.resolver.readers,
+							!org.apache.xmlbeans,
+							!org.aspectj.bridge,
+							!org.aspectj.weaver,
+							!org.aspectj.weaver.bcel,
+							!org.aspectj.weaver.patterns,
+							!org.bouncycastle.asn1,
+							!org.bouncycastle.asn1.cms,
+							!org.bouncycastle.asn1.pkcs,
+							!org.bouncycastle.asn1.x509,
+							!org.bouncycastle.cms,
+							!org.bouncycastle.crypto,
+							!org.bouncycastle.crypto.engines,
+							!org.bouncycastle.crypto.modes,
+							!org.bouncycastle.crypto.paddings,
+							!org.bouncycastle.crypto.params,
+							!org.bouncycastle.jce.provider,
+							!org.bouncycastle.util,
+							!org.dom4j,
+							!org.dom4j.io,
+							!org.eigenbase.resgen,
+							!org.eigenbase.util.property,
+							!org.eigenbase.xom,
+							!org.jboss.cache,
+							!org.jboss.cache.lock,
+							!org.jdom,
+							!org.jdom.input,
+							!org.jdom.output,
+							!org.logicalcobwebs.proxool,
+							!org.logicalcobwebs.proxool.configuration,
+							!org.objectweb.asm,
+							!org.objectweb.asm.commons,
+							!org.objectweb.asm.tree,
+							!org.objectweb.asm.tree.analysis,
+							!org.objectweb.asm.util,
+							!org.olap4j,
+							!org.olap4j.impl,
+							!org.olap4j.mdx,
+							!org.olap4j.mdx.parser,
+							!org.olap4j.mdx.parser.impl,
+							!org.olap4j.metadata,
+							!org.olap4j.type,
+							!sun.io,
+							!sun.rmi.rmic,
+							!sun.security.action,
+							!sun.tools.javac,
+							!mondrian.test,
+							!org.eclipse.core.resources,
+							!org.eclipse.core.runtime,
+							!org.eclipse.core.runtime.jobs,
+							!org.eclipse.core.runtime.preferences,
+							!org.eclipse.jface.text,
+							!org.eclipse.osgi.util,
+							!org.eclipse.text.edits,
+							!org.osgi.service.prefs,
+							*
+						</Import-Package>
+						<Export-Package>
+							org.liveSense.service.report.jasper.*;version=${project.version}
+						</Export-Package>
+						<Include-Resource>
+							{maven-resources}
+						</Include-Resource>
+                        <Embed-Dependency>
+                            DynamicJasper;inline=true,
+                            jasperreports;inline=true,
+							ant;inline=true,
+							antlr;inline=true,
+							barbecue;inline=true,
+							barcode4j;inline=true,
+							batik-anim;inline=true,
+							batik-awt-util;inline=true,
+							batik-bridge;inline=true,
+							batik-css;inline=true,
+							batik-dom;inline=true,
+							batik-ext;inline=true,
+							batik-gvt;inline=true,
+							batik-parser;inline=true,
+							batik-script;inline=true,
+							batik-svg-dom;inline=true,
+							batik-svggen;inline=true,
+							batik-util;inline=true,
+							batik-xml;inline=true,
+							bsh;inline=true,
+							commons-beanutils;inline=true,
+							commons-collections;inline=true,
+							commons-digester;inline=true,
+							commons-javaflow;inline=true,
+							commons-logging;inline=true,
+							groovy-all;inline=true,
+							hibernate3;inline=true,
+							hsqldb;inline=true,
+							iText;inline=true,
+							jakarta-bcel;inline=true,
+							jaxen;inline=true,
+							jcommon;inline=true,
+							jdt-compiler;inline=true,
+							jfreechart;inline=true,
+							jpa;inline=true,
+							jxl;inline=true,
+							mondrian;inline=true,
+							png-encoder;inline=true,
+							poi;inline=true,
+							rhino;inline=true,
+							saaj-api;inline=true,
+							spring-beans;inline=true,
+							spring-core;inline=true,
+							xalan;inline=true,
+							xercesImpl;inline=true,
+							xml-apis-ext;inline=true,
+							xml-apis;inline=true,
+							jdtcore;inline=true
+                        </Embed-Dependency>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											jasperreports-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.0-beta-2,)
+										</versionRange>
+										<goals>
+											<goal>compile-reports</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-antrun-plugin
+										</artifactId>
+										<versionRange>
+											[1.6,)
+										</versionRange>
+										<goals>
+											<goal>run</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>javax.jcr</groupId>
+			<artifactId>jcr</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.jackrabbit</groupId>
+			<artifactId>jackrabbit-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.liveSense</groupId>
+			<artifactId>org.liveSense.core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.scr.annotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.sling</groupId>
+			<artifactId>org.apache.sling.jcr.api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.sling</groupId>
+			<artifactId>org.apache.sling.commons.log</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.sling</groupId>
+			<artifactId>org.apache.sling.jcr.base</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.compendium</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.sling</groupId>
+			<artifactId>org.apache.sling.commons.osgi</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+        
+        <!-- DynamicJasper -->
+        <dependency>
+            <groupId>ar.com.fdvs</groupId>
+            <artifactId>DynamicJasper</artifactId>
+            <version>3.0.13</version>
+        </dependency>
+        
+        
+        <dependency>
+            <groupId>eclipse</groupId>
+            <artifactId>jdtcore</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        
+        <!-- 
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>2.1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.7</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml</groupId>
+            <artifactId>jaxp-api</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-digester</groupId>
+            <artifactId>commons-digester</artifactId>
+            <version>2.1</version>
+        </dependency>
+        -->
+        <!--
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.7</version>
+        </dependency>
+        <dependency>
+            <groupId>httpunit</groupId>
+            <artifactId>httpunit</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.4</version>
+        </dependency>   
+        <dependency>
+            <groupId>jtidy</groupId>
+            <artifactId>jtidy</artifactId>
+            <version>4aug2000r7-dev</version>
+        </dependency>
+        <dependency>
+            <groupId>nekohtml</groupId>
+            <artifactId>nekohtml</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>rhino</groupId>
+            <artifactId>js</artifactId>
+            <version>1.5R4.1</version>
+        </dependency>     
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xmlParserAPIs</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.barbecue</groupId>
+            <artifactId>barbecue</artifactId>
+            <version>1.5-beta1</version>
+        </dependency>
+        <dependency>
+            <groupId>opensymphony</groupId>
+            <artifactId>oscore</artifactId>
+            <version>2.2.4</version>
+        </dependency>
+        -->
+        
+        <!-- Jasper dependencies -->
+        <dependency>
+            <groupId>jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+        <!--
+         <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collection</groupId>
+            <artifactId>commons-collection</artifactId>
+            <version>3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        
+        <dependency>
+            <groupId>ant</groupId>
+            <artifactId>optional</artifactId>
+            <version>1.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>antlr</groupId>
+            <artifactId>antlr</artifactId>
+            <version>2.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.keypoint</groupId>
+            <artifactId>png-encoder</artifactId>
+            <version>1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.0.13</version>
+        </dependency>
+        -->
+        
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>ant</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/ant-1.5.1.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>antlr</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/antlr-2.7.5.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>barbecue</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/barbecue-1.5-beta1.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>barcode4j</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/barcode4j.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-anim</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-anim.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-awt-util</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-awt-util.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-bridge</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-bridge.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-css</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-css.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-dom</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-dom.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-ext</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-ext.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-gvt</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-gvt.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-parser</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-parser.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-script</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-script.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-svg-dom</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-svg-dom.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-svggen</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-svggen.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-util</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-util.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>batik-xml</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/batik-xml.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>bsh</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/bsh-2.0b4.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>commons-beanutils</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/commons-beanutils-1.8.0.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>commons-collections</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/commons-collections-2.1.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>commons-digester</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/commons-digester-1.7.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>commons-javaflow</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/commons-javaflow-20060411.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>commons-logging</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/commons-logging-1.0.2.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>groovy-all</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/groovy-all-1.5.5.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>hibernate3</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/hibernate3.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>hsqldb</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/hsqldb-1.8.0-10.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>iText</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/iText-2.1.0.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>jakarta-bcel</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/jakarta-bcel-20050813.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>jaxen</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/jaxen-1.1.1.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>jcommon</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/jcommon-1.0.15.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>jdt-compiler</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/jdt-compiler-3.1.1.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>jfreechart</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/jfreechart-1.0.12.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>jpa</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/jpa.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>jxl</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/jxl-2.6.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>mondrian</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/mondrian-3.1.1.12687.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>png-encoder</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/png-encoder-1.5.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>poi</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/poi-3.2-FINAL-20081019.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>rhino</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/rhino-1.7R1.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>saaj-api</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/saaj-api-1.3.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>spring-beans</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/spring-beans.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>spring-core</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/spring-core.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>xalan</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/xalan.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>xercesImpl</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/xercesImpl.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>xml-apis-ext</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/xml-apis-ext.jar</systemPath>
+</dependency>
+
+<dependency>
+  <groupId>org.liveSense.service.report.jasper</groupId>
+  <artifactId>xml-apis</artifactId>
+  <version>${project.version}</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/libs/xml-apis.jar</systemPath>
+</dependency>
+        
+	</dependencies>
+</project>
+
+
+
+
+
+
+
