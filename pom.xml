@@ -193,6 +193,7 @@
 							!org.olap4j.metadata,
 							!org.olap4j.type,
 							!sun.io,
+							!sun.print,
 							!sun.rmi.rmic,
 							!sun.security.action,
 							!sun.tools.javac,
