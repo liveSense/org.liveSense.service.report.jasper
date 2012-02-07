@@ -13,7 +13,6 @@ import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRXmlDataSource;
@@ -24,7 +23,6 @@ import net.sf.jasperreports.engine.export.JRRtfExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.util.JRSaver;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.engine.xml.JasperDesignFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,13 +42,15 @@ public class JasperReportGenerator {
 			String	EXPORT_TYPE = req.getParameter("EXPORT_TYPE" );
 			String	OUTPUT_FILENAME = req.getParameter("OUTPUT_FILENAME" );
 				
-			HashMap<String, String> hm = new HashMap<String, String>();
+			HashMap<String, Object> hm = new HashMap<String, Object>();
 
 			JasperReport jasperReport = null;
 			JasperPrint jp;
 
 				
 			//jasperReport = JasperCompileManager.compileReport(new FileInputStream(new File(INPUT_XML)));
+			
+			/*
 			try {
 				JasperDesign jasperDesign =	JRXmlLoader.load(new FileInputStream(new File(JRXML_FILE)));
 				jasperReport = JasperCompileManager.compileReport(jasperDesign);
@@ -60,9 +60,10 @@ public class JasperReportGenerator {
 				log.error("Error compiling", e);
 			}
 			//jasperReport = (JasperReport) JRLoader.loadObject(new File(JASPER_FILE));
-				
+			*/
+			jasperReport = (JasperReport) JRLoader.loadObject(new FileInputStream(new File(JASPER_FILE)));
+			
 			jp = JasperFillManager.fillReport(jasperReport, hm, new JRXmlDataSource(INPUT_XML,PARENT_XPATH));				
-				
 
 				if ("csv".equalsIgnoreCase(EXPORT_TYPE)){
 					JRCsvExporter exporter = new JRCsvExporter();
