@@ -33,9 +33,9 @@
 	<artifactId>org.liveSense.service.report.jasper</artifactId>
 	<packaging>bundle</packaging>
 	<version>4.5.0-1.0.1-SNAPSHOT</version>
-	<name>liveSense Jasper report service</name>
+	<name>liveSense :: Framework :: Jasper reports</name>
 	<description>
-		liveSense Jasper report service
+		liveSense Jasper report framework
 	</description>
 
 	<build>
@@ -119,6 +119,7 @@
 							org.springframework.core.io.*;resolution:=optional,
 							org.w3c.dom.svg.*;resolution:=optional,
 							org.apache.commons.javaflow.*;resolution:=optional,
+							org.mozilla.javascript.*;resolution:=optional,
                 				*
             				</Import-Package>
             
