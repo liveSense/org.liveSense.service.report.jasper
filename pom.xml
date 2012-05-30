@@ -32,7 +32,7 @@
 
 	<artifactId>org.liveSense.service.report.jasper</artifactId>
 	<packaging>bundle</packaging>
-	<version>4.5.0-1.0.1-SNAPSHOT</version>
+	<version>${jasper.version}_1-SNAPSHOT</version>
 	<name>liveSense :: Framework :: Jasper reports</name>
 	<description>
 		liveSense Jasper report framework
@@ -65,7 +65,7 @@
 			        <dependency>
 						<groupId>net.sf.jasperreports</groupId>
 						<artifactId>jasperreports</artifactId>
-						<version>4.5.0</version>
+						<version>${jasper.version}</version>
 					</dependency>
 					
 					<dependency>
@@ -213,7 +213,7 @@
         <dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-			<version>4.5.0</version>
+			<version>${jasper.version}</version>
 		</dependency>
         <dependency>
             <groupId>com.lowagie</groupId>
@@ -253,7 +253,7 @@
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-			<version>4.5.0</version>
+			<version>${jasper.version}</version>
 		</dependency>
 	    
     
