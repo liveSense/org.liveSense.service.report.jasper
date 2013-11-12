@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><features name="liveSense-${liveSense.version}-service-report-jasper" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+	<feature name="liveSense-service-report-jasper" version="${liveSense.service.report.jasper.version}" description="liveSense service report jasper">
+		<feature>liveSense-core-base</feature>
+		<feature>liveSense-framework-jasperreports</feature>
+        <bundle>mvn:com.github.livesense/org.liveSense.service.report.jasper/${liveSense.service.report.jasper.version}</bundle>
+	</feature>
+</features>
